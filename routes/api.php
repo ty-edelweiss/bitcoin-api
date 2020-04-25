@@ -11,5 +11,5 @@
 |
 */
 
-$router->get('/', 'LineController@get');
-$router->post('/', 'LineController@post');
+$router->get('/', 'BotController@get');
+$router->post('/', 'BotController@post');

@@ -1,11 +1,11 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "bitcoin-api",
+    "description": "The application to provide bitcion information",
     "license": "MIT",
     "type": "project",
     "require": {
         "php": "^7.2.5",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel/lumen-framework": "^7.0",
         "linecorp/line-bot-sdk": "^4.3"
     },
