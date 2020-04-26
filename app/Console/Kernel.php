@@ -27,10 +27,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            DataCollector::withChain([
-                new Notification
-            ])->dispatch();
-        })->everyTenMinutes();
+        $schedule->job((new DataCollector)->chain(new Notification))->everyTenMinutes();
     }
 }
