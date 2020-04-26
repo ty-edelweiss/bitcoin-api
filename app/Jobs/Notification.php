@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use LINE\LINEBot;
@@ -13,6 +14,8 @@ use App\Traits\JsonLineConverter;
 class Notification extends Job
 {
     use JsonLineConverter;
+
+    const CURRENCY = 'JPY';
 
     private $bot;
 
@@ -37,7 +40,7 @@ class Notification extends Job
         $data = $this->loadJsonLine(storage_path('app/bitcoin.jsonl'));
         $latestData = Arr::last($data);
 
-        $currencyData = Arr::get($latestData, 'JPY');
+        $currencyData = Arr::get($latestData, self::CURRENCY);
 
         if (is_null($currencyData)) {
             $message = 'Non currency data';
