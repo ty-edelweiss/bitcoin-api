@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 use App\Jobs\DataCollector;
+use App\Jobs\Notification;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +27,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new DataCollector)->everyTenMinutes();
+        $schedule->call(function () {
+            DataCollector::withChain([
+                new Notification
+            ])->dispatch();
+        })->everyTenMinutes();
     }
 }
