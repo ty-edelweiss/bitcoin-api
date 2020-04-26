@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as LINETextMessageBuilder;
+use Symfony\Component\HttpFoundation\Response as HTTPStatus;
 
 use App\Traits\JsonLineConverter;
 
